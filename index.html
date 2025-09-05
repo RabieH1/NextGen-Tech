@@ -1,54 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen Tech - Maintenance Informatique</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextGen Tech - Rabie Hamadouche</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>NextGen Tech</h1>
-        <p>Maintenance & Support Informatique – Nouvelle Génération</p>
-    </header>
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="container">
+      <h1>NextGen Tech</h1>
+      <h2>Innovative IT Solutions</h2>
+      <p>Maintenance informatique personnalisée pour tous vos besoins.</p>
+      <a href="#contact" class="btn">Get Started</a>
+    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Macbook_Pro_16-inch_2021_space_grey_PNG.png" alt="Laptop" class="hero-img">
+  </header>
 
-    <section class="presentation">
-        <h2>À propos de moi</h2>
-        <p>Je m'appelle Rabie Hamadouche, ingénieur informatique avec plus de 5 ans d'expérience.  
-        J’appartiens à une nouvelle génération de professionnels passionnés, réactifs et à l’écoute.</p>
-    </section>
+  <!-- À PROPOS -->
+  <section class="about">
+    <div class="container">
+      <h2>À propos</h2>
+      <p>Je suis <strong>Rabie Hamadouche</strong>, ingénieur informatique de 24 ans avec plus de 5 ans d'expérience. Je fais partie de la nouvelle génération d'experts informatiques, polyvalents, réactifs et passionnés.</p>
+    </div>
+  </section>
 
-    <section class="services">
-        <h2>Services</h2>
-        <p>Chez NextGen Tech, je propose des prestations informatiques personnalisées.  
-        Vous m’expliquez votre besoin, et je vous réponds rapidement pour vous dire si c’est faisable.  
-        Simple, clair, honnête.</p>
-    </section>
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="container">
+      <h2>Mes Services</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="monitoring">
+          <h3>Suivi informatique</h3>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/2920/2920244.png" alt="support">
+          <h3>Assistance personnalisée</h3>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/109/109618.png" alt="security">
+          <h3>Sécurité & optimisation</h3>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/777/777243.png" alt="backup">
+          <h3>Sauvegarde & récupération</h3>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>📞 <strong>Téléphone :</strong> <a href="tel:+33662188467">06 62 18 84 67</a></p>
-        <p>📧 <strong>Email :</strong> <a href="mailto:contact@nextgentech.fr">contact@nextgentech.fr</a></p>
-        <p>💬 <strong>WhatsApp :</strong> <a href="#" onclick="openWhatsApp()">Cliquer ici pour discuter</a></p>
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Téléphone : <a href="tel:+33662188467">06 62 18 84 67</a></p>
+      <p>WhatsApp : <a href="#" onclick="openWhatsApp()">Cliquez ici pour discuter</a></p>
+      <form action="https://formspree.io/f/mwkgaqpg" method="POST">
+        <input type="text" name="name" placeholder="Votre nom" required>
+        <input type="email" name="_replyto" placeholder="Votre email" required>
+        <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
 
-        <form action="https://formspree.io/f/mwkgaqpg" method="POST">
-            <label for="name">Nom :</label>
-            <input type="text" id="name" name="name" required>
+  <footer>
+    <p>&copy; 2025 NextGen Tech - Rabie Hamadouche</p>
+  </footer>
 
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="_replyto" required>
-
-            <label for="message">Message :</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button type="submit">Envoyer</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 NextGen Tech – Rabie Hamadouche</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
