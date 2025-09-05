@@ -2,106 +2,43 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NextGen Tech</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextGen Tech – Maintenance Informatique</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 </head>
-<body>
-  <!-- NAVBAR -->
-  <nav>
-    <div class="container nav-container">
-      <h1 class="logo">NEXTGEN TECH</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <header class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <h2>IT SERVICES & SUPPORT</h2>
-        <p>Professional computer maintenance and assistance</p>
-        <a href="#contact" class="btn">Get Started</a>
-      </div>
-      <div class="hero-img">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Macbook_Pro_16-inch_2021_space_grey_PNG.png" alt="Laptop">
-      </div>
+<body class="bg-white text-gray-900">
+  <!-- Header -->
+  <header class="bg-gray-100">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-blue-600">NextGen Tech</h1>
+      <nav class="space-x-6">
+        <a href="#about" class="text-gray-700 hover:text-blue-600">À propos</a>
+        <a href="#services" class="text-gray-700 hover:text-blue-600">Services</a>
+        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <div class="container about-content">
-      <div>
-        <h3>ABOUT</h3>
-        <h2>Innovative Solutions for Your IT Needs</h2>
-        <p>
-          Je suis <strong>Rabie Hamadouche</strong>, ingénieur informatique de 24 ans, avec plus de 5 ans d’expérience.
-          Je fais partie de la nouvelle génération d'experts polyvalents, réactifs et passionnés.
-        </p>
-      </div>
-      <div class="about-services">
-        <ul>
-          <li>✔ Support personnalisé</li>
-          <li>✔ Maintenance complète</li>
-          <li>✔ Assistance à distance ou sur site</li>
-        </ul>
+  <!-- Hero -->
+  <section class="bg-white py-20" id="hero">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Support & Maintenance Informatique Professionnelle</h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Une expertise sur mesure pour particuliers et professionnels, avec réactivité et efficacité.
+      </p>
+      <a href="#contact" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition">
+        Me contacter
+      </a>
+      <div class="mt-12">
+        <img src="assets/laptop-hero.png" alt="Ordinateur portable" class="mx-auto w-full max-w-md md:max-w-xl rounded-xl shadow-lg" />
       </div>
     </div>
   </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <div class="services-grid">
-        <div class="service">
-          <img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" alt="">
-          <h3>System Monitoring</h3>
-          <p>Real-time supervision and performance tracking</p>
-        </div>
-        <div class="service">
-          <img src="https://cdn-icons-png.flaticon.com/512/3269/3269625.png" alt="">
-          <h3>Help Desk Support</h3>
-          <p>Direct assistance for software & hardware issues</p>
-        </div>
-        <div class="service">
-          <img src="https://cdn-icons-png.flaticon.com/512/2889/2889676.png" alt="">
-          <h3>Network Security</h3>
-          <p>Protect your systems and data from threats</p>
-        </div>
-        <div class="service">
-          <img src="https://cdn-icons-png.flaticon.com/512/10334/10334408.png" alt="">
-          <h3>Data Backup & Recovery</h3>
-          <p>Keep your files safe and recover lost data</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Téléphone : <a href="tel:+33662188467">06 62 18 84 67</a></p>
-      <p>WhatsApp : <a href="#" onclick="openWhatsApp()">Cliquez ici pour discuter</a></p>
-      <form action="https://formspree.io/f/mwkgaqpg" method="POST">
-        <input type="text" name="name" placeholder="Votre nom" required />
-        <input type="email" name="_replyto" placeholder="Votre email" required />
-        <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
-        <button type="submit">Envoyer</button>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 NextGen Tech – Rabie Hamadouche</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
