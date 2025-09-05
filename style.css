@@ -8,136 +8,220 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f9f9f9;
-  color: #222;
+  color: #1a1a1a;
   line-height: 1.6;
 }
 
-/* GLOBAL CONTAINER */
-.container {
+/* NAVIGATION */
+nav {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-container {
   max-width: 1100px;
   margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #1a73e8;
 }
 
 /* HERO SECTION */
 .hero {
   background: #fff;
+  padding: 60px 20px;
+}
+
+.hero-content {
+  max-width: 1100px;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 60px 20px;
-  position: relative;
+  gap: 30px;
 }
 
-.hero h1 {
-  font-size: 2.8rem;
-  color: #1a1a1a;
+.hero-text {
+  flex: 1 1 400px;
 }
 
-.hero h2 {
-  font-size: 2rem;
-  margin-top: 10px;
+.hero-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
   color: #555;
 }
 
-.hero p {
-  margin-top: 10px;
-  font-size: 1.1rem;
-  color: #666;
-  max-width: 400px;
-}
-
-.hero .btn {
-  margin-top: 20px;
-  display: inline-block;
+.btn {
+  padding: 12px 24px;
   background: #1a73e8;
   color: white;
-  padding: 12px 24px;
+  border: none;
   border-radius: 30px;
   text-decoration: none;
   font-weight: 500;
   transition: background 0.3s ease;
 }
 
-.hero .btn:hover {
+.btn:hover {
   background: #0f5fd0;
 }
 
 .hero-img {
-  max-width: 350px;
-  width: 100%;
-  margin-top: 20px;
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.hero-img img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* ABOUT */
 .about {
-  background: #fff;
-  padding: 60px 20px;
-}
-
-.about h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #1a1a1a;
-}
-
-/* SERVICES */
-.services {
   background: #f1f1f1;
   padding: 60px 20px;
 }
 
+.about-content {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.about h3 {
+  color: #1a73e8;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.about h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.about p {
+  color: #444;
+}
+
+.about-services ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-services li {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* SERVICES */
+.services {
+  background: #fff;
+  padding: 60px 20px;
+}
+
 .services h2 {
+  text-align: center;
   font-size: 2rem;
   margin-bottom: 40px;
   color: #1a1a1a;
-  text-align: center;
 }
 
-.service-grid {
+.services-grid {
+  max-width: 1100px;
+  margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
-  justify-content: center;
 }
 
-.service-card {
-  background: white;
+.service {
+  background: #f9f9f9;
   padding: 30px;
-  text-align: center;
   border-radius: 12px;
+  text-align: center;
   box-shadow: 0 4px 16px rgba(0,0,0,0.05);
   transition: transform 0.3s ease;
 }
 
-.service-card:hover {
+.service:hover {
   transform: translateY(-5px);
 }
 
-.service-card img {
+.service img {
   width: 50px;
   margin-bottom: 20px;
 }
 
-.service-card h3 {
+.service h3 {
   font-size: 1.1rem;
-  color: #333;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.service p {
+  font-size: 0.95rem;
+  color: #555;
 }
 
 /* CONTACT */
 .contact {
-  background: #fff;
+  background: #f1f1f1;
   padding: 60px 20px;
+}
+
+.contact .container {
+  max-width: 700px;
+  margin: auto;
 }
 
 .contact h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #1a1a1a;
+  text-align: center;
 }
 
 .contact p {
+  text-align: center;
   margin-bottom: 10px;
   font-size: 1rem;
 }
@@ -147,16 +231,11 @@ body {
   text-decoration: none;
 }
 
-.contact a:hover {
-  text-decoration: underline;
-}
-
 form {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-width: 500px;
 }
 
 input, textarea {
@@ -193,12 +272,18 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .hero {
+  .hero-content, .about-content {
     flex-direction: column;
     text-align: center;
   }
 
-  .hero-img {
-    margin-top: 40px;
+  .nav-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
   }
 }
