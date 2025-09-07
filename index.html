@@ -631,7 +631,6 @@
             <!-- Desktop Menu -->
             <div class="nav-links">
                 <a href="#home">Home</a>
-                <a href="#about">About</a>
                 <a href="#services">Services</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -647,7 +646,6 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="mobile-menu container">
             <a href="#home">Home</a>
-            <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#contact">Contact</a>
         </div>
@@ -658,7 +656,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>IT SERVICES & SUPPORT</h1>
+                    <h1>IT SERVICES & <span style="color: #2563eb;">SUPPORT</span></h1>
                     <p>Solutions informatiques professionnelles pour particuliers et entreprises. Maintenance, sécurité et support technique de qualité.</p>
                     <div class="hero-buttons">
                         <button onclick="openContactModal()" class="btn-primary">
@@ -670,99 +668,73 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <svg width="400" height="300" viewBox="0 0 400 300" fill="none" style="filter: drop-shadow(20px 20px 40px rgba(0, 0, 0, 0.3)) drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.2));">
-                        <!-- 3D Shadow Base -->
-                        <rect x="58" y="88" width="300" height="180" rx="8" fill="#1a1a1a" opacity="0.3"/>
-                        <rect x="56" y="86" width="300" height="180" rx="8" fill="#2a2a2a" opacity="0.4"/>
-                        <rect x="54" y="84" width="300" height="180" rx="8" fill="#3a3a3a" opacity="0.5"/>
-                        
-                        <!-- Computer Monitor -->
-                        <rect x="50" y="80" width="300" height="180" rx="8" fill="#374151" stroke="#6B7280" stroke-width="2"/>
-                        <rect x="60" y="90" width="280" height="160" rx="4" fill="#1F2937"/>
-                        
-                        <!-- Screen Glow Effect -->
-                        <rect x="60" y="90" width="280" height="160" rx="4" fill="url(#screenGlow)" opacity="0.8"/>
-                        
-                        <!-- Screen Content -->
-                        <rect x="80" y="110" width="60" height="8" rx="2" fill="#10B981"/>
-                        <rect x="80" y="125" width="100" height="4" rx="2" fill="#6B7280"/>
-                        <rect x="80" y="135" width="80" height="4" rx="2" fill="#6B7280"/>
-                        
-                        <rect x="200" y="110" width="120" height="60" rx="4" fill="#374151"/>
-                        <circle cx="260" cy="140" r="15" fill="#3B82F6"/>
-                        
-                        <!-- Stand Shadow -->
-                        <rect x="188" y="268" width="40" height="20" rx="4" fill="#1a1a1a" opacity="0.4"/>
-                        <rect x="168" y="288" width="80" height="8" rx="4" fill="#1a1a1a" opacity="0.4"/>
-                        
-                        <!-- Stand -->
-                        <rect x="180" y="260" width="40" height="20" rx="4" fill="#6B7280"/>
-                        <rect x="160" y="280" width="80" height="8" rx="4" fill="#9CA3AF"/>
-                        
-                        <!-- Floating Elements with 3D effect -->
-                        <circle cx="325" cy="55" r="20" fill="#CC3333" opacity="0.3"/>
-                        <circle cx="320" cy="50" r="20" fill="#EF4444" opacity="0.9"/>
-                        
-                        <rect x="35" y="45" width="30" height="30" rx="6" fill="#D97706" opacity="0.3"/>
-                        <rect x="30" y="40" width="30" height="30" rx="6" fill="#F59E0B" opacity="0.9"/>
-                        
-                        <circle cx="355" cy="255" r="15" fill="#7C3AED" opacity="0.3"/>
-                        <circle cx="350" cy="250" r="15" fill="#8B5CF6" opacity="0.9"/>
-                        
-                        <!-- Gradient Definitions -->
-                        <defs>
-                            <radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.3"/>
-                                <stop offset="100%" style="stop-color:#1F2937;stop-opacity:0.1"/>
-                            </radialGradient>
-                        </defs>
-                    </svg>
+                    <div style="
+                        background: rgba(255, 255, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        border-radius: 20px;
+                        padding: 30px;
+                        box-shadow: 
+                            0 25px 50px rgba(0, 0, 0, 0.15),
+                            0 10px 20px rgba(0, 0, 0, 0.1),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+                        position: relative;
+                    ">
+                        <svg width="400" height="300" viewBox="0 0 400 300" fill="none" style="filter: drop-shadow(20px 20px 40px rgba(0, 0, 0, 0.3)) drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.2));">
+                            <!-- 3D Shadow Base -->
+                            <rect x="58" y="88" width="300" height="180" rx="8" fill="#1a1a1a" opacity="0.3"/>
+                            <rect x="56" y="86" width="300" height="180" rx="8" fill="#2a2a2a" opacity="0.4"/>
+                            <rect x="54" y="84" width="300" height="180" rx="8" fill="#3a3a3a" opacity="0.5"/>
+                            
+                            <!-- Computer Monitor -->
+                            <rect x="50" y="80" width="300" height="180" rx="8" fill="#374151" stroke="#6B7280" stroke-width="2"/>
+                            <rect x="60" y="90" width="280" height="160" rx="4" fill="#1F2937"/>
+                            
+                            <!-- Screen Glow Effect -->
+                            <rect x="60" y="90" width="280" height="160" rx="4" fill="url(#screenGlow)" opacity="0.8"/>
+                            
+                            <!-- Screen Content -->
+                            <rect x="80" y="110" width="60" height="8" rx="2" fill="#10B981"/>
+                            <rect x="80" y="125" width="100" height="4" rx="2" fill="#6B7280"/>
+                            <rect x="80" y="135" width="80" height="4" rx="2" fill="#6B7280"/>
+                            
+                            <rect x="200" y="110" width="120" height="60" rx="4" fill="#374151"/>
+                            <circle cx="260" cy="140" r="15" fill="#3B82F6"/>
+                            
+                            <!-- Stand Shadow -->
+                            <rect x="188" y="268" width="40" height="20" rx="4" fill="#1a1a1a" opacity="0.4"/>
+                            <rect x="168" y="288" width="80" height="8" rx="4" fill="#1a1a1a" opacity="0.4"/>
+                            
+                            <!-- Stand -->
+                            <rect x="180" y="260" width="40" height="20" rx="4" fill="#6B7280"/>
+                            <rect x="160" y="280" width="80" height="8" rx="4" fill="#9CA3AF"/>
+                            
+                            <!-- Floating Elements with 3D effect -->
+                            <circle cx="325" cy="55" r="20" fill="#CC3333" opacity="0.3"/>
+                            <circle cx="320" cy="50" r="20" fill="#EF4444" opacity="0.9"/>
+                            
+                            <rect x="35" y="45" width="30" height="30" rx="6" fill="#D97706" opacity="0.3"/>
+                            <rect x="30" y="40" width="30" height="30" rx="6" fill="#F59E0B" opacity="0.9"/>
+                            
+                            <circle cx="355" cy="255" r="15" fill="#7C3AED" opacity="0.3"/>
+                            <circle cx="350" cy="250" r="15" fill="#8B5CF6" opacity="0.9"/>
+                            
+                            <!-- Gradient Definitions -->
+                            <defs>
+                                <radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.3"/>
+                                    <stop offset="100%" style="stop-color:#1F2937;stop-opacity:0.1"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section section-white">
-        <div class="container">
-            <div class="section-header">
-                <h2>À Propos de NextGen Tech</h2>
-                <p>Notre expertise au service de votre tranquillité numérique</p>
-            </div>
-            
-            <div class="grid-3">
-                <div class="feature-card">
-                    <div class="feature-icon blue">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <h3>Expertise Reconnue</h3>
-                    <p>Plus de 10 ans d'expérience dans la maintenance informatique et le support technique.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon green">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-                        </svg>
-                    </div>
-                    <h3>Support 24/7</h3>
-                    <p>Assistance technique disponible à tout moment pour résoudre vos problèmes informatiques.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon purple">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                        </svg>
-                    </div>
-                    <h3>Sécurité Garantie</h3>
-                    <p>Protection maximale de vos données avec nos solutions de sécurité avancées.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Services Section -->
     <section id="services" class="section section-gray">
@@ -1044,5 +1016,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b71087d335c8ed',t:'MTc1NzI1NzEwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b7274452ae024b',t:'MTc1NzI1ODA0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
