@@ -570,6 +570,15 @@
             color: #6b7280;
         }
         
+        /* Story Animation Styles */
+        .story-frame {
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        #progressBar {
+            transition: width 0.3s ease-out;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -669,119 +678,261 @@
                 </div>
                 <div class="hero-image">
                     <div style="
-                        background: rgba(255, 255, 255, 0.1);
-                        backdrop-filter: blur(10px);
-                        border: 1px solid rgba(255, 255, 255, 0.2);
-                        border-radius: 20px;
-                        padding: 30px;
+                        background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+                        backdrop-filter: blur(20px);
+                        border: 1px solid rgba(255, 255, 255, 0.18);
+                        border-radius: 24px;
+                        padding: 40px;
                         box-shadow: 
-                            0 25px 50px rgba(0, 0, 0, 0.15),
-                            0 10px 20px rgba(0, 0, 0, 0.1),
-                            inset 0 1px 0 rgba(255, 255, 255, 0.3),
-                            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+                            0 32px 64px rgba(0, 0, 0, 0.12),
+                            0 16px 32px rgba(0, 0, 0, 0.08),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.4);
                         position: relative;
                     ">
-                        <svg width="400" height="300" viewBox="0 0 400 300" fill="none" style="filter: drop-shadow(20px 20px 40px rgba(0, 0, 0, 0.3)) drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.2));">
-                            <!-- Laptop Base Shadow -->
-                            <ellipse cx="202" cy="275" rx="120" ry="15" fill="#000000" opacity="0.2"/>
+                        <svg width="420" height="320" viewBox="0 0 420 320" fill="none" style="filter: drop-shadow(0px 25px 50px rgba(0, 0, 0, 0.15));">
+                            <!-- MacBook Shadow -->
+                            <ellipse cx="210" cy="295" rx="140" ry="18" fill="#000000" opacity="0.15"/>
                             
-                            <!-- Laptop Base -->
-                            <rect x="80" y="200" width="240" height="160" rx="12" fill="url(#laptopGradient)" stroke="#C0C0C0" stroke-width="1"/>
+                            <!-- MacBook Base (Silver/White) -->
+                            <rect x="70" y="200" width="280" height="18" rx="9" fill="url(#macbookBase)"/>
+                            <rect x="75" y="205" width="270" height="120" rx="12" fill="url(#macbookKeyboard)"/>
                             
-                            <!-- Keyboard Area -->
-                            <rect x="90" y="210" width="220" height="140" rx="8" fill="#F5F5F5"/>
+                            <!-- Trackpad (Force Touch) -->
+                            <rect x="175" y="280" width="70" height="45" rx="12" fill="url(#trackpadGradient)" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
                             
-                            <!-- Trackpad -->
-                            <rect x="170" y="290" width="60" height="40" rx="8" fill="#E8E8E8" stroke="#D0D0D0" stroke-width="1"/>
-                            
-                            <!-- Keyboard Keys -->
-                            <g fill="#FFFFFF" stroke="#E0E0E0" stroke-width="0.5">
-                                <!-- Row 1 -->
-                                <rect x="100" y="220" width="12" height="8" rx="1"/>
-                                <rect x="115" y="220" width="12" height="8" rx="1"/>
-                                <rect x="130" y="220" width="12" height="8" rx="1"/>
-                                <rect x="145" y="220" width="12" height="8" rx="1"/>
-                                <rect x="160" y="220" width="12" height="8" rx="1"/>
-                                <rect x="175" y="220" width="12" height="8" rx="1"/>
-                                <rect x="190" y="220" width="12" height="8" rx="1"/>
-                                <rect x="205" y="220" width="12" height="8" rx="1"/>
-                                <rect x="220" y="220" width="12" height="8" rx="1"/>
-                                <rect x="235" y="220" width="12" height="8" rx="1"/>
-                                <rect x="250" y="220" width="12" height="8" rx="1"/>
-                                <rect x="265" y="220" width="12" height="8" rx="1"/>
-                                <rect x="280" y="220" width="20" height="8" rx="1"/>
+                            <!-- Keyboard Layout (Butterfly/Magic Keyboard style) -->
+                            <g fill="url(#keyGradient)" stroke="rgba(0,0,0,0.08)" stroke-width="0.3">
+                                <!-- Function Row -->
+                                <rect x="85" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="100" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="115" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="130" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="150" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="165" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="180" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="195" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="215" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="230" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="245" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="260" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="280" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="295" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="310" y="215" width="25" height="7" rx="1.5"/>
                                 
-                                <!-- Row 2 -->
-                                <rect x="100" y="235" width="18" height="8" rx="1"/>
-                                <rect x="122" y="235" width="12" height="8" rx="1"/>
-                                <rect x="137" y="235" width="12" height="8" rx="1"/>
-                                <rect x="152" y="235" width="12" height="8" rx="1"/>
-                                <rect x="167" y="235" width="12" height="8" rx="1"/>
-                                <rect x="182" y="235" width="12" height="8" rx="1"/>
-                                <rect x="197" y="235" width="12" height="8" rx="1"/>
-                                <rect x="212" y="235" width="12" height="8" rx="1"/>
-                                <rect x="227" y="235" width="12" height="8" rx="1"/>
-                                <rect x="242" y="235" width="12" height="8" rx="1"/>
-                                <rect x="257" y="235" width="12" height="8" rx="1"/>
-                                <rect x="272" y="235" width="12" height="8" rx="1"/>
-                                <rect x="287" y="235" width="13" height="8" rx="1"/>
+                                <!-- Number Row -->
+                                <rect x="85" y="228" width="10" height="9" rx="2"/>
+                                <rect x="100" y="228" width="10" height="9" rx="2"/>
+                                <rect x="115" y="228" width="10" height="9" rx="2"/>
+                                <rect x="130" y="228" width="10" height="9" rx="2"/>
+                                <rect x="145" y="228" width="10" height="9" rx="2"/>
+                                <rect x="160" y="228" width="10" height="9" rx="2"/>
+                                <rect x="175" y="228" width="10" height="9" rx="2"/>
+                                <rect x="190" y="228" width="10" height="9" rx="2"/>
+                                <rect x="205" y="228" width="10" height="9" rx="2"/>
+                                <rect x="220" y="228" width="10" height="9" rx="2"/>
+                                <rect x="235" y="228" width="10" height="9" rx="2"/>
+                                <rect x="250" y="228" width="10" height="9" rx="2"/>
+                                <rect x="265" y="228" width="10" height="9" rx="2"/>
+                                <rect x="280" y="228" width="25" height="9" rx="2"/>
+                                <rect x="310" y="228" width="25" height="9" rx="2"/>
                                 
-                                <!-- Row 3 -->
-                                <rect x="100" y="250" width="22" height="8" rx="1"/>
-                                <rect x="126" y="250" width="12" height="8" rx="1"/>
-                                <rect x="141" y="250" width="12" height="8" rx="1"/>
-                                <rect x="156" y="250" width="12" height="8" rx="1"/>
-                                <rect x="171" y="250" width="12" height="8" rx="1"/>
-                                <rect x="186" y="250" width="12" height="8" rx="1"/>
-                                <rect x="201" y="250" width="12" height="8" rx="1"/>
-                                <rect x="216" y="250" width="12" height="8" rx="1"/>
-                                <rect x="231" y="250" width="12" height="8" rx="1"/>
-                                <rect x="246" y="250" width="12" height="8" rx="1"/>
-                                <rect x="261" y="250" width="12" height="8" rx="1"/>
-                                <rect x="276" y="250" width="24" height="8" rx="1"/>
+                                <!-- QWERTY Row -->
+                                <rect x="85" y="242" width="15" height="9" rx="2"/>
+                                <rect x="105" y="242" width="10" height="9" rx="2"/>
+                                <rect x="120" y="242" width="10" height="9" rx="2"/>
+                                <rect x="135" y="242" width="10" height="9" rx="2"/>
+                                <rect x="150" y="242" width="10" height="9" rx="2"/>
+                                <rect x="165" y="242" width="10" height="9" rx="2"/>
+                                <rect x="180" y="242" width="10" height="9" rx="2"/>
+                                <rect x="195" y="242" width="10" height="9" rx="2"/>
+                                <rect x="210" y="242" width="10" height="9" rx="2"/>
+                                <rect x="225" y="242" width="10" height="9" rx="2"/>
+                                <rect x="240" y="242" width="10" height="9" rx="2"/>
+                                <rect x="255" y="242" width="10" height="9" rx="2"/>
+                                <rect x="270" y="242" width="10" height="9" rx="2"/>
+                                <rect x="285" y="242" width="20" height="9" rx="2"/>
+                                <rect x="310" y="242" width="25" height="9" rx="2"/>
                                 
-                                <!-- Spacebar -->
-                                <rect x="150" y="265" width="100" height="8" rx="1"/>
+                                <!-- ASDF Row -->
+                                <rect x="85" y="256" width="18" height="9" rx="2"/>
+                                <rect x="108" y="256" width="10" height="9" rx="2"/>
+                                <rect x="123" y="256" width="10" height="9" rx="2"/>
+                                <rect x="138" y="256" width="10" height="9" rx="2"/>
+                                <rect x="153" y="256" width="10" height="9" rx="2"/>
+                                <rect x="168" y="256" width="10" height="9" rx="2"/>
+                                <rect x="183" y="256" width="10" height="9" rx="2"/>
+                                <rect x="198" y="256" width="10" height="9" rx="2"/>
+                                <rect x="213" y="256" width="10" height="9" rx="2"/>
+                                <rect x="228" y="256" width="10" height="9" rx="2"/>
+                                <rect x="243" y="256" width="10" height="9" rx="2"/>
+                                <rect x="258" y="256" width="22" height="9" rx="2"/>
+                                <rect x="285" y="256" width="20" height="9" rx="2"/>
+                                <rect x="310" y="256" width="25" height="9" rx="2"/>
+                                
+                                <!-- Spacebar Row -->
+                                <rect x="85" y="270" width="22" height="9" rx="2"/>
+                                <rect x="112" y="270" width="10" height="9" rx="2"/>
+                                <rect x="127" y="270" width="10" height="9" rx="2"/>
+                                <rect x="142" y="270" width="96" height="9" rx="2"/>
+                                <rect x="243" y="270" width="10" height="9" rx="2"/>
+                                <rect x="258" y="270" width="10" height="9" rx="2"/>
+                                <rect x="273" y="270" width="10" height="9" rx="2"/>
+                                <rect x="288" y="270" width="10" height="9" rx="2"/>
+                                <rect x="303" y="270" width="10" height="9" rx="2"/>
+                                <rect x="318" y="270" width="17" height="9" rx="2"/>
                             </g>
                             
-                            <!-- Screen -->
-                            <rect x="85" y="50" width="230" height="155" rx="12" fill="url(#screenGradient)" stroke="#A0A0A0" stroke-width="2"/>
+                            <!-- MacBook Screen (Retina Display) -->
+                            <rect x="75" y="30" width="270" height="175" rx="16" fill="url(#screenBezel)"/>
                             
-                            <!-- Screen Bezel -->
-                            <rect x="95" y="60" width="210" height="135" rx="8" fill="#000000"/>
+                            <!-- Screen Glass Effect -->
+                            <rect x="80" y="35" width="260" height="165" rx="12" fill="#000000"/>
                             
-                            <!-- Screen Content -->
-                            <rect x="100" y="65" width="200" height="125" rx="6" fill="url(#screenContent)"/>
+                            <!-- Retina Display Content -->
+                            <rect x="85" y="40" width="250" height="155" rx="8" fill="url(#retinaDisplay)"/>
                             
-                            <!-- Screen Text -->
-                            <text x="200" y="120" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="16" font-weight="700">NEXTGEN</text>
-                            <text x="200" y="140" text-anchor="middle" fill="#60A5FA" font-family="Inter, sans-serif" font-size="16" font-weight="700">TECH</text>
-                            
-                            <!-- Apple Logo -->
-                            <g transform="translate(195, 25)">
-                                <path d="M8.5 0C6.5 0 5 1.5 5 3.5c0 1.2.6 2.3 1.5 3C6.2 7.2 6 8 6 8s.8-.2 1.5-.8c.7.6 1.5.8 1.5.8s-.2-.8-.5-1.5c.9-.7 1.5-1.8 1.5-3C10 1.5 8.5 0 8.5 0z" fill="#C0C0C0"/>
+                            <!-- macOS Interface Elements -->
+                            <g id="macosInterface">
+                                <!-- Menu Bar -->
+                                <rect x="85" y="40" width="250" height="20" rx="8" fill="rgba(40, 40, 40, 0.95)"/>
+                                
+                                <!-- Traffic Lights -->
+                                <circle cx="95" cy="50" r="3" fill="#FF5F57"/>
+                                <circle cx="105" cy="50" r="3" fill="#FFBD2E"/>
+                                <circle cx="115" cy="50" r="3" fill="#28CA42"/>
+                                
+                                <!-- Menu Items -->
+                                <text x="130" y="53" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="8" font-weight="500">NextGen Tech</text>
+                                <text x="310" y="53" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="7">14:32</text>
+                                
+                                <!-- Animated Content Area -->
+                                <g id="storyContent">
+                                    <!-- Story Frame 1 -->
+                                    <g class="story-frame" opacity="1">
+                                        <rect x="85" y="60" width="250" height="135" fill="url(#gradientBg1)"/>
+                                        <text x="210" y="110" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="16" font-weight="700" letter-spacing="-0.5px">NEXTGEN TECH</text>
+                                        <text x="210" y="130" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="400">Votre partenaire IT de confiance</text>
+                                        <text x="210" y="150" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9" font-weight="300">Depuis 2021</text>
+                                    </g>
+                                    
+                                    <!-- Story Frame 2 -->
+                                    <g class="story-frame" opacity="0">
+                                        <rect x="85" y="60" width="250" height="135" fill="url(#gradientBg2)"/>
+                                        <text x="210" y="105" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="14" font-weight="600" letter-spacing="-0.3px">SOLUTIONS INNOVANTES</text>
+                                        <text x="210" y="125" text-anchor="middle" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">Sites web • Applications</text>
+                                        <text x="210" y="140" text-anchor="middle" fill="#60A5FA" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">Support • Maintenance</text>
+                                        <text x="210" y="160" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9" font-weight="300">Technologies modernes</text>
+                                    </g>
+                                    
+                                    <!-- Story Frame 3 -->
+                                    <g class="story-frame" opacity="0">
+                                        <rect x="85" y="60" width="250" height="135" fill="url(#gradientBg3)"/>
+                                        <text x="210" y="110" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="14" font-weight="600" letter-spacing="-0.3px">ÉQUIPE PASSIONNÉE</text>
+                                        <text x="210" y="130" text-anchor="middle" fill="#FBBF24" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">💡 Innovation constante</text>
+                                        <text x="210" y="150" text-anchor="middle" fill="#60A5FA" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">Écoute • Créativité</text>
+                                    </g>
+                                    
+                                    <!-- Story Frame 4 -->
+                                    <g class="story-frame" opacity="0">
+                                        <rect x="85" y="60" width="250" height="135" fill="url(#gradientBg4)"/>
+                                        <text x="210" y="105" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="13" font-weight="600" letter-spacing="-0.3px">VOTRE PROJET</text>
+                                        <text x="210" y="125" text-anchor="middle" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">✓ Analyse gratuite</text>
+                                        <text x="210" y="140" text-anchor="middle" fill="#60A5FA" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">✓ Devis transparent</text>
+                                        <text x="210" y="155" text-anchor="middle" fill="#FBBF24" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">✓ Accompagnement complet</text>
+                                    </g>
+                                </g>
+                                
+                                <!-- Progress Indicator (iOS style) -->
+                                <rect x="195" y="180" width="30" height="2" fill="rgba(255,255,255,0.3)" rx="1"/>
+                                <rect x="195" y="180" width="0" height="2" fill="#007AFF" rx="1" id="progressBar"/>
                             </g>
                             
-                            <!-- Floating Elements -->
-                            <circle cx="340" cy="60" r="18" fill="#EF4444" opacity="0.9"/>
-                            <rect x="25" y="45" width="28" height="28" rx="6" fill="#F59E0B" opacity="0.9"/>
-                            <circle cx="360" cy="240" r="14" fill="#8B5CF6" opacity="0.9"/>
+                            <!-- Apple Logo (Glowing) -->
+                            <g transform="translate(205, 15)">
+                                <path d="M10.5 0c-2.5 0-4.5 2-4.5 4.5 0 1.5.8 2.8 2 3.5-.4 1-.6 2-.6 2s1-.3 2-1c1 .7 2 1 2 1s-.2-1-.6-2c1.2-.7 2-2 2-3.5C15 2 13 0 10.5 0z" fill="url(#appleGlow)"/>
+                            </g>
                             
-                            <!-- Gradients -->
+                            <!-- Floating Design Elements -->
+                            <circle cx="360" cy="70" r="20" fill="url(#floatingGrad1)" opacity="0.8"/>
+                            <rect x="20" y="50" width="32" height="32" rx="8" fill="url(#floatingGrad2)" opacity="0.8"/>
+                            <circle cx="380" cy="250" r="16" fill="url(#floatingGrad3)" opacity="0.8"/>
+                            
+                            <!-- Gradients and Effects -->
                             <defs>
-                                <linearGradient id="laptopGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#F0F0F0;stop-opacity:1"/>
-                                    <stop offset="100%" style="stop-color:#D0D0D0;stop-opacity:1"/>
+                                <!-- MacBook Gradients -->
+                                <linearGradient id="macbookBase" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#F5F5F7;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#E5E5E7;stop-opacity:1"/>
                                 </linearGradient>
-                                <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#E8E8E8;stop-opacity:1"/>
-                                    <stop offset="100%" style="stop-color:#C8C8C8;stop-opacity:1"/>
+                                
+                                <linearGradient id="macbookKeyboard" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#F9F9FB;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#F0F0F2;stop-opacity:1"/>
                                 </linearGradient>
-                                <radialGradient id="screenContent" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:0.8"/>
-                                    <stop offset="50%" style="stop-color:#7C3AED;stop-opacity:0.6"/>
-                                    <stop offset="100%" style="stop-color:#1F2937;stop-opacity:0.9"/>
+                                
+                                <linearGradient id="trackpadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#EBEBED;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#D1D1D6;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="keyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#F2F2F7;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <!-- Screen Gradients -->
+                                <linearGradient id="screenBezel" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#E5E5E7;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#D1D1D6;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <radialGradient id="retinaDisplay" cx="50%" cy="50%" r="70%">
+                                    <stop offset="0%" style="stop-color:#1C1C1E;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#000000;stop-opacity:1"/>
                                 </radialGradient>
+                                
+                                <!-- Background Gradients for Frames -->
+                                <linearGradient id="gradientBg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#007AFF;stop-opacity:0.9"/>
+                                    <stop offset="100%" style="stop-color:#5856D6;stop-opacity:0.9"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="gradientBg2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#34C759;stop-opacity:0.9"/>
+                                    <stop offset="100%" style="stop-color:#007AFF;stop-opacity:0.9"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="gradientBg3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF9500;stop-opacity:0.9"/>
+                                    <stop offset="100%" style="stop-color:#FF2D92;stop-opacity:0.9"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="gradientBg4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#5856D6;stop-opacity:0.9"/>
+                                    <stop offset="100%" style="stop-color:#AF52DE;stop-opacity:0.9"/>
+                                </linearGradient>
+                                
+                                <!-- Apple Logo Glow -->
+                                <radialGradient id="appleGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.9"/>
+                                    <stop offset="100%" style="stop-color:#8E8E93;stop-opacity:0.7"/>
+                                </radialGradient>
+                                
+                                <!-- Floating Elements -->
+                                <linearGradient id="floatingGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF3B30;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#FF9500;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="floatingGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FFCC02;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#FF9500;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="floatingGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#AF52DE;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#5856D6;stop-opacity:1"/>
+                                </linearGradient>
                             </defs>
                         </svg>
                     </div>
@@ -955,15 +1106,15 @@
                     <div style="margin-bottom: 1.5rem;">
                         <div class="contact-item">
                             <span>📧</span>
-                            <span>contact@nextgentech.fr</span>
+                            <span>nextgen.tech.cannes@gmail.com</span>
                         </div>
                         <div class="contact-item">
                             <span>📞</span>
-                            <span>01 23 45 67 89</span>
+                            <span>06 62 18 84 67</span>
                         </div>
                         <div class="contact-item">
                             <span>📍</span>
-                            <span>123 Rue de la Tech, 75001 Paris</span>
+                            <span>628 allée de la marine royale, 06210 Mandelieu-La-Napoule</span>
                         </div>
                     </div>
 
@@ -1068,6 +1219,52 @@
                 closeContactModal();
             }
         });
+
+        // Story Animation
+        let currentFrame = 0;
+        const frames = document.querySelectorAll('.story-frame');
+        const progressBar = document.getElementById('progressBar');
+        const totalFrames = frames.length;
+        const frameDuration = 3000; // 3 seconds per frame
+
+        function showNextFrame() {
+            // Hide current frame
+            frames[currentFrame].style.opacity = '0';
+            
+            // Move to next frame
+            currentFrame = (currentFrame + 1) % totalFrames;
+            
+            // Show next frame
+            frames[currentFrame].style.opacity = '1';
+            
+            // Update progress bar
+            const progressWidth = ((currentFrame + 1) / totalFrames) * 30;
+            progressBar.style.width = progressWidth + 'px';
+            
+            // Reset progress bar when cycle completes
+            if (currentFrame === 0) {
+                setTimeout(() => {
+                    progressBar.style.width = '0px';
+                    setTimeout(() => {
+                        progressBar.style.width = (30 / totalFrames) + 'px';
+                    }, 100);
+                }, 200);
+            }
+        }
+
+        // Start the story animation
+        function startStoryAnimation() {
+            // Initial progress bar
+            progressBar.style.width = (30 / totalFrames) + 'px';
+            
+            // Start cycling through frames
+            setInterval(showNextFrame, frameDuration);
+        }
+
+        // Start animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(startStoryAnimation, 1000); // Start after 1 second
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97d0ce2312ff7006',t:'MTc1NzUyNzAyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97fe9940571e8048',t:'MTc1ODAwNzE5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
