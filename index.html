@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -579,6 +578,15 @@
         #progressBar {
             transition: width 0.3s ease-out;
         }
+
+        /* Footer Slogan Animation Styles */
+        .footer-slogan-frame {
+            transition: opacity 0.6s ease-in-out;
+        }
+        
+        .footer-progress-dot {
+            transition: all 0.4s ease-in-out;
+        }
         
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -1082,6 +1090,59 @@
                         </svg>
                         <span>NEXTGEN TECH</span>
                     </div>
+                    
+                    <!-- Company Name -->
+                    <h3 style="font-size: 1.8rem; font-weight: 700; color: white; margin-bottom: 1rem; letter-spacing: -0.5px;">NextGen Tech</h3>
+                    
+                    <!-- Animated Screen with Slogan -->
+                    <div style="
+                        background: linear-gradient(145deg, #1f2937, #374151);
+                        border-radius: 12px;
+                        padding: 1rem;
+                        border: 1px solid rgba(75, 85, 99, 0.3);
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                        position: relative;
+                        overflow: hidden;
+                        margin-bottom: 1rem;
+                    ">
+                        <!-- Screen Header -->
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <div style="width: 8px; height: 8px; background: #ff5f57; border-radius: 50%;"></div>
+                            <div style="width: 8px; height: 8px; background: #ffbd2e; border-radius: 50%;"></div>
+                            <div style="width: 8px; height: 8px; background: #28ca42; border-radius: 50%;"></div>
+                        </div>
+                        
+                        <!-- Animated Content -->
+                        <div id="footerSloganContent" style="text-align: center; min-height: 60px; display: flex; flex-direction: column; justify-content: center;">
+                            <div class="footer-slogan-frame" style="opacity: 1;">
+                                <div style="font-size: 0.9rem; font-weight: 600; color: #60a5fa; margin-bottom: 0.25rem;">💡 Innovation</div>
+                                <div style="font-size: 0.75rem; color: #9ca3af;">Votre vision, notre expertise</div>
+                            </div>
+                            
+                            <div class="footer-slogan-frame" style="opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;">
+                                <div style="font-size: 0.9rem; font-weight: 600; color: #34d399; margin-bottom: 0.25rem;">🚀 Performance</div>
+                                <div style="font-size: 0.75rem; color: #9ca3af;">Solutions qui font la différence</div>
+                            </div>
+                            
+                            <div class="footer-slogan-frame" style="opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;">
+                                <div style="font-size: 0.9rem; font-weight: 600; color: #fbbf24; margin-bottom: 0.25rem;">⭐ Excellence</div>
+                                <div style="font-size: 0.75rem; color: #9ca3af;">Qualité garantie, résultats assurés</div>
+                            </div>
+                            
+                            <div class="footer-slogan-frame" style="opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;">
+                                <div style="font-size: 0.9rem; font-weight: 600; color: #a78bfa; margin-bottom: 0.25rem;">🎯 Sur-mesure</div>
+                                <div style="font-size: 0.75rem; color: #9ca3af;">Chaque projet est unique</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Progress Dots -->
+                        <div style="display: flex; justify-content: center; gap: 0.25rem; margin-top: 0.5rem;">
+                            <div class="footer-progress-dot" style="width: 4px; height: 4px; background: #60a5fa; border-radius: 50%; opacity: 1;"></div>
+                            <div class="footer-progress-dot" style="width: 4px; height: 4px; background: #4b5563; border-radius: 50%; opacity: 0.5;"></div>
+                            <div class="footer-progress-dot" style="width: 4px; height: 4px; background: #4b5563; border-radius: 50%; opacity: 0.5;"></div>
+                            <div class="footer-progress-dot" style="width: 4px; height: 4px; background: #4b5563; border-radius: 50%; opacity: 0.5;"></div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
@@ -1240,6 +1301,42 @@
         window.addEventListener('load', () => {
             setTimeout(startStoryAnimation, 1000); // Start after 1 second
         });
+
+        // Footer Slogan Animation
+        let currentSloganFrame = 0;
+        const sloganFrames = document.querySelectorAll('.footer-slogan-frame');
+        const progressDots = document.querySelectorAll('.footer-progress-dot');
+        const totalSloganFrames = sloganFrames.length;
+        const sloganFrameDuration = 2500; // 2.5 seconds per frame
+
+        function showNextSloganFrame() {
+            // Hide current frame
+            sloganFrames[currentSloganFrame].style.opacity = '0';
+            progressDots[currentSloganFrame].style.opacity = '0.5';
+            progressDots[currentSloganFrame].style.background = '#4b5563';
+            
+            // Move to next frame
+            currentSloganFrame = (currentSloganFrame + 1) % totalSloganFrames;
+            
+            // Show next frame
+            sloganFrames[currentSloganFrame].style.opacity = '1';
+            progressDots[currentSloganFrame].style.opacity = '1';
+            
+            // Update progress dot color based on current frame
+            const colors = ['#60a5fa', '#34d399', '#fbbf24', '#a78bfa'];
+            progressDots[currentSloganFrame].style.background = colors[currentSloganFrame];
+        }
+
+        // Start the footer slogan animation
+        function startFooterSloganAnimation() {
+            setInterval(showNextSloganFrame, sloganFrameDuration);
+        }
+
+        // Start footer animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(startStoryAnimation, 1000); // Start hero animation after 1 second
+            setTimeout(startFooterSloganAnimation, 1500); // Start footer animation after 1.5 seconds
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ff844497e7f6a9',t:'MTc1ODAxNjgyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ff8d87a2c641da',t:'MTc1ODAxNzIwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
