@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Tech - IT Services & Support</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9fafb;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 50;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo svg {
+            width: 2rem;
+            height: 2rem;
+            color: #2563eb;
+        }
+        
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            display: none;
+            padding: 1rem 0;
+        }
+        
+        .mobile-menu.show {
+            display: block;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 0.5rem 0;
+            text-decoration: none;
+            color: #374151;
+        }
+        
+        /* Hero Section */
+        .hero-gradient {
+            background: white;
+            color: #1f2937;
+            padding: 6rem 0 4rem;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #6b7280;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-white {
+            background: white;
+        }
+        
+        .section-gray {
+            background: #f9fafb;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+        
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Cards */
+        .feature-card {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        .feature-icon.blue {
+            background: #dbeafe;
+        }
+        
+        .feature-icon.green {
+            background: #dcfce7;
+        }
+        
+        .feature-icon.purple {
+            background: #f3e8ff;
+        }
+        
+        .feature-icon svg {
+            width: 2rem;
+            height: 2rem;
+        }
+        
+        .feature-icon.blue svg {
+            color: #2563eb;
+        }
+        
+        .feature-icon.green svg {
+            color: #16a34a;
+        }
+        
+        .feature-icon.purple svg {
+            color: #9333ea;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+        
+        .feature-card p {
+            color: #6b7280;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .service-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+        
+        .service-card p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-list {
+            list-style: none;
+        }
+        
+        .service-list li {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+        }
+        
+        .footer-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #4b5563, transparent);
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            background: rgba(55, 65, 81, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            border: 1px solid rgba(75, 85, 99, 0.3);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-icon svg {
+            width: 2rem;
+            height: 2rem;
+            color: #60a5fa;
+        }
+        
+        .contact-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-header p {
+            color: #9ca3af;
+            max-width: 32rem;
+            margin: 0 auto;
+        }
+        
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+            color: #9ca3af;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            color: #9ca3af;
+        }
+        
+        .footer-btn {
+            width: 100%;
+            background: rgba(55, 65, 81, 0.5);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .footer-btn:hover {
+            background: rgba(75, 85, 99, 0.5);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: #9ca3af;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #60a5fa;
+        }
+        
+        .social-links svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+        
+        .footer-bottom a {
+            color: #9ca3af;
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            color: white;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .close-btn:hover {
+            color: #374151;
+        }
+        
+        .success-message {
+            display: none;
+            background: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-label {
+            display: block;
+            color: #374151;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .checkbox-group input {
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        /* Story Animation Styles */
+        .story-frame {
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        #progressBar {
+            transition: width 0.3s ease-out;
+        }
+
+        /* Footer Slogan Animation Styles */
+        .footer-slogan-frame {
+            transition: opacity 0.6s ease-in-out;
+        }
+        
+        .footer-progress-dot {
+            transition: all 0.4s ease-in-out;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                </svg>
+                <span>NEXTGEN TECH</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu container">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>IT SERVICES & <span style="color: #2563eb;">SUPPORT</span></h1>
+                    <p>Création de sites web sur mesure et solutions informatiques professionnelles pour particuliers et entreprises. Maintenance, sécurité et support technique de qualité.</p>
+                    <div class="hero-buttons">
+                        <button onclick="openContactModal()" class="btn-primary">
+                            Contactez-nous
+                        </button>
+                        <button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="btn-secondary">
+                            Voir nos Services
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div style="
+                        background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+                        backdrop-filter: blur(20px);
+                        border: 1px solid rgba(255, 255, 255, 0.18);
+                        border-radius: 24px;
+                        padding: 40px;
+                        box-shadow: 
+                            0 32px 64px rgba(0, 0, 0, 0.12),
+                            0 16px 32px rgba(0, 0, 0, 0.08),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+                        position: relative;
+                    ">
+                        <svg width="420" height="320" viewBox="0 0 420 320" fill="none" style="filter: drop-shadow(0px 25px 50px rgba(0, 0, 0, 0.15));">
+                            <!-- MacBook Shadow -->
+                            <ellipse cx="210" cy="295" rx="140" ry="18" fill="#000000" opacity="0.15"/>
+                            
+                            <!-- MacBook Base (Silver/White) -->
+                            <rect x="70" y="200" width="280" height="18" rx="9" fill="url(#macbookBase)"/>
+                            <rect x="75" y="205" width="270" height="120" rx="12" fill="url(#macbookKeyboard)"/>
+                            
+                            <!-- Trackpad (Force Touch) -->
+                            <rect x="175" y="280" width="70" height="45" rx="12" fill="url(#trackpadGradient)" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+                            
+                            <!-- Keyboard Layout (Butterfly/Magic Keyboard style) -->
+                            <g fill="url(#keyGradient)" stroke="rgba(0,0,0,0.08)" stroke-width="0.3">
+                                <!-- Function Row -->
+                                <rect x="85" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="100" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="115" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="130" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="150" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="165" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="180" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="195" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="215" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="230" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="245" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="260" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="280" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="295" y="215" width="10" height="7" rx="1.5"/>
+                                <rect x="310" y="215" width="25" height="7" rx="1.5"/>
+                                
+                                <!-- Number Row -->
+                                <rect x="85" y="228" width="10" height="9" rx="2"/>
+                                <rect x="100" y="228" width="10" height="9" rx="2"/>
+                                <rect x="115" y="228" width="10" height="9" rx="2"/>
+                                <rect x="130" y="228" width="10" height="9" rx="2"/>
+                                <rect x="145" y="228" width="10" height="9" rx="2"/>
+                                <rect x="160" y="228" width="10" height="9" rx="2"/>
+                                <rect x="175" y="228" width="10" height="9" rx="2"/>
+                                <rect x="190" y="228" width="10" height="9" rx="2"/>
+                                <rect x="205" y="228" width="10" height="9" rx="2"/>
+                                <rect x="220" y="228" width="10" height="9" rx="2"/>
+                                <rect x="235" y="228" width="10" height="9" rx="2"/>
+                                <rect x="250" y="228" width="10" height="9" rx="2"/>
+                                <rect x="265" y="228" width="10" height="9" rx="2"/>
+                                <rect x="280" y="228" width="25" height="9" rx="2"/>
+                                <rect x="310" y="228" width="25" height="9" rx="2"/>
+                                
+                                <!-- QWERTY Row -->
+                                <rect x="85" y="242" width="15" height="9" rx="2"/>
+                                <rect x="105" y="242" width="10" height="9" rx="2"/>
+                                <rect x="120" y="242" width="10" height="9" rx="2"/>
+                                <rect x="135" y="242" width="10" height="9" rx="2"/>
+                                <rect x="150" y="242" width="10" height="9" rx="2"/>
+                                <rect x="165" y="242" width="10" height="9" rx="2"/>
+                                <rect x="180" y="242" width="10" height="9" rx="2"/>
+                                <rect x="195" y="242" width="10" height="9" rx="2"/>
+                                <rect x="210" y="242" width="10" height="9" rx="2"/>
+                                <rect x="225" y="242" width="10" height="9" rx="2"/>
+                                <rect x="240" y="242" width="10" height="9" rx="2"/>
+                                <rect x="255" y="242" width="10" height="9" rx="2"/>
+                                <rect x="270" y="242" width="10" height="9" rx="2"/>
+                                <rect x="285" y="242" width="20" height="9" rx="2"/>
+                                <rect x="310" y="242" width="25" height="9" rx="2"/>
+                                
+                                <!-- ASDF Row -->
+                                <rect x="85" y="256" width="18" height="9" rx="2"/>
+                                <rect x="108" y="256" width="10" height="9" rx="2"/>
+                                <rect x="123" y="256" width="10" height="9" rx="2"/>
+                                <rect x="138" y="256" width="10" height="9" rx="2"/>
+                                <rect x="153" y="256" width="10" height="9" rx="2"/>
+                                <rect x="168" y="256" width="10" height="9" rx="2"/>
+                                <rect x="183" y="256" width="10" height="9" rx="2"/>
+                                <rect x="198" y="256" width="10" height="9" rx="2"/>
+                                <rect x="213" y="256" width="10" height="9" rx="2"/>
+                                <rect x="228" y="256" width="10" height="9" rx="2"/>
+                                <rect x="243" y="256" width="10" height="9" rx="2"/>
+                                <rect x="258" y="256" width="22" height="9" rx="2"/>
+                                <rect x="285" y="256" width="20" height="9" rx="2"/>
+                                <rect x="310" y="256" width="25" height="9" rx="2"/>
+                                
+                                <!-- Spacebar Row -->
+                                <rect x="85" y="270" width="22" height="9" rx="2"/>
+                                <rect x="112" y="270" width="10" height="9" rx="2"/>
+                                <rect x="127" y="270" width="10" height="9" rx="2"/>
+                                <rect x="142" y="270" width="96" height="9" rx="2"/>
+                                <rect x="243" y="270" width="10" height="9" rx="2"/>
+                                <rect x="258" y="270" width="10" height="9" rx="2"/>
+                                <rect x="273" y="270" width="10" height="9" rx="2"/>
+                                <rect x="288" y="270" width="10" height="9" rx="2"/>
+                                <rect x="303" y="270" width="10" height="9" rx="2"/>
+                                <rect x="318" y="270" width="17" height="9" rx="2"/>
+                            </g>
+                            
+                            <!-- MacBook Screen (Retina Display) -->
+                            <rect x="75" y="30" width="270" height="175" rx="16" fill="url(#screenBezel)"/>
+                            
+                            <!-- Screen Glass Effect -->
+                            <rect x="80" y="35" width="260" height="165" rx="12" fill="#000000"/>
+                            
+                            <!-- Retina Display Content -->
+                            <rect x="85" y="40" width="250" height="155" rx="8" fill="url(#retinaDisplay)"/>
+                            
+                            <!-- macOS Interface Elements -->
+                            <g id="macosInterface">
+                                <!-- Menu Bar -->
+                                <rect x="85" y="40" width="250" height="20" rx="8" fill="rgba(40, 40, 40, 0.95)"/>
+                                
+                                <!-- Traffic Lights -->
+                                <circle cx="95" cy="50" r="3" fill="#FF5F57"/>
+                                <circle cx="105" cy="50" r="3" fill="#FFBD2E"/>
+                                <circle cx="115" cy="50" r="3" fill="#28CA42"/>
+                                
+                                <!-- Menu Items -->
+                                <text x="130" y="53" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="8" font-weight="500">NextGen Tech</text>
+                                <text x="310" y="53" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="7">14:32</text>
+                                
+                                <!-- Animated Content Area -->
+                                <g id="storyContent">
+                                    <!-- Story Frame 1 -->
+                                    <g class="story-frame" opacity="1">
+                                        <rect x="85" y="60" width="250" height="135" fill="url(#gradientBg1)"/>
+                                        <text x="210" y="110" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="16" font-weight="700" letter-spacing="-0.5px">NEXTGEN TECH</text>
+                                        <text x="210" y="130" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="400">Votre partenaire IT de confiance</text>
+                                        <text x="210" y="150" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9" font-weight="300">Depuis 2021</text>
+                                    </g>
+                                    
+                                    <!-- Story Frame 2 -->
+                                    <g class="story-frame" opacity="0">
+                                        <rect x="85" y="60" width="250" height="135" fill="url(#gradientBg2)"/>
+                                        <text x="210" y="105" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="14" font-weight="600" letter-spacing="-0.3px">SOLUTIONS INNOVANTES</text>
+                                        <text x="210" y="125" text-anchor="middle" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">Sites web • Applications</text>
+                                        <text x="210" y="140" text-anchor="middle" fill="#60A5FA" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">Support • Maintenance</text>
+                                        <text x="210" y="160" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9" font-weight="300">Technologies modernes</text>
+                                    </g>
+                                    
+                                    <!-- Story Frame 3 -->
+                                    <g class="story-frame" opacity="0">
+                                        <rect x="85" y="60" width="250" height="135" fill="url(#gradientBg3)"/>
+                                        <text x="210" y="110" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="14" font-weight="600" letter-spacing="-0.3px">ÉQUIPE PASSIONNÉE</text>
+                                        <text x="210" y="130" text-anchor="middle" fill="#FBBF24" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">💡 Innovation constante</text>
+                                        <text x="210" y="150" text-anchor="middle" fill="#60A5FA" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">Écoute • Créativité</text>
+                                    </g>
+                                    
+                                    <!-- Story Frame 4 -->
+                                    <g class="story-frame" opacity="0">
+                                        <rect x="85" y="60" width="250" height="135" fill="url(#gradientBg4)"/>
+                                        <text x="210" y="105" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="13" font-weight="600" letter-spacing="-0.3px">VOTRE PROJET</text>
+                                        <text x="210" y="125" text-anchor="middle" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">✓ Analyse gratuite</text>
+                                        <text x="210" y="140" text-anchor="middle" fill="#60A5FA" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">✓ Devis transparent</text>
+                                        <text x="210" y="155" text-anchor="middle" fill="#FBBF24" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="500">✓ Accompagnement complet</text>
+                                    </g>
+                                </g>
+                                
+                                <!-- Progress Indicator (iOS style) -->
+                                <rect x="195" y="180" width="30" height="2" fill="rgba(255,255,255,0.3)" rx="1"/>
+                                <rect x="195" y="180" width="0" height="2" fill="#007AFF" rx="1" id="progressBar"/>
+                            </g>
+                            
+                            <!-- Apple Logo (Glowing) -->
+                            <g transform="translate(205, 15)">
+                                <path d="M10.5 0c-2.5 0-4.5 2-4.5 4.5 0 1.5.8 2.8 2 3.5-.4 1-.6 2-.6 2s1-.3 2-1c1 .7 2 1 2 1s-.2-1-.6-2c1.2-.7 2-2 2-3.5C15 2 13 0 10.5 0z" fill="url(#appleGlow)"/>
+                            </g>
+                            
+                            <!-- Floating Design Elements -->
+                            <circle cx="360" cy="70" r="20" fill="url(#floatingGrad1)" opacity="0.8"/>
+                            <rect x="20" y="50" width="32" height="32" rx="8" fill="url(#floatingGrad2)" opacity="0.8"/>
+                            <circle cx="380" cy="250" r="16" fill="url(#floatingGrad3)" opacity="0.8"/>
+                            
+                            <!-- Gradients and Effects -->
+                            <defs>
+                                <!-- MacBook Gradients -->
+                                <linearGradient id="macbookBase" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#F5F5F7;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#E5E5E7;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="macbookKeyboard" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#F9F9FB;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#F0F0F2;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="trackpadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#EBEBED;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#D1D1D6;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="keyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#F2F2F7;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <!-- Screen Gradients -->
+                                <linearGradient id="screenBezel" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#E5E5E7;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#D1D1D6;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <radialGradient id="retinaDisplay" cx="50%" cy="50%" r="70%">
+                                    <stop offset="0%" style="stop-color:#1C1C1E;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#000000;stop-opacity:1"/>
+                                </radialGradient>
+                                
+                                <!-- Background Gradients for Frames -->
+                                <linearGradient id="gradientBg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#007AFF;stop-opacity:0.9"/>
+                                    <stop offset="100%" style="stop-color:#5856D6;stop-opacity:0.9"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="gradientBg2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#34C759;stop-opacity:0.9"/>
+                                    <stop offset="100%" style="stop-color:#007AFF;stop-opacity:0.9"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="gradientBg3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF9500;stop-opacity:0.9"/>
+                                    <stop offset="100%" style="stop-color:#FF2D92;stop-opacity:0.9"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="gradientBg4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#5856D6;stop-opacity:0.9"/>
+                                    <stop offset="100%" style="stop-color:#AF52DE;stop-opacity:0.9"/>
+                                </linearGradient>
+                                
+                                <!-- Apple Logo Glow -->
+                                <radialGradient id="appleGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.9"/>
+                                    <stop offset="100%" style="stop-color:#8E8E93;stop-opacity:0.7"/>
+                                </radialGradient>
+                                
+                                <!-- Floating Elements -->
+                                <linearGradient id="floatingGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF3B30;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#FF9500;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="floatingGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FFCC02;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#FF9500;stop-opacity:1"/>
+                                </linearGradient>
+                                
+                                <linearGradient id="floatingGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#AF52DE;stop-opacity:1"/>
+                                    <stop offset="100%" style="stop-color:#5856D6;stop-opacity:1"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Services Section -->
+    <section id="services" class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Services</h2>
+                <p>Solutions complètes pour tous vos besoins informatiques</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="service-card">
+                    <div class="service-icon blue">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9 6a1 1 0 011-1 1 1 0 011 1v.092a4.535 4.535 0 011.676.662C13.398 7.28 14 8.046 14 9c0 .954-.602 1.72-1.324 2.246.48.32 1.324.974 1.324 1.754 0 .954-.602 1.72-1.324 2.246A4.535 4.535 0 0111 15.908V16a1 1 0 11-2 0v-.092a4.535 4.535 0 01-1.676-.662C6.602 14.72 6 13.954 6 13c0-.954.602-1.72 1.324-2.246C6.844 10.434 6 9.78 6 9c0-.954.602-1.72 1.324-2.246A4.535 4.535 0 019 6.092V6z"/>
+                        </svg>
+                    </div>
+                    <h3>Approche Personnalisée</h3>
+                    <p>Chaque projet informatique est unique. Nous analysons vos besoins spécifiques et évaluons la faisabilité technique et budgétaire avant de proposer une solution sur mesure.</p>
+                    <ul class="service-list">
+                        <li>• Analyse détaillée de vos besoins</li>
+                        <li>• Étude de faisabilité technique</li>
+                        <li>• Évaluation budgétaire transparente</li>
+                        <li>• Solutions adaptées à votre contexte</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon green">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                    </div>
+                    <h3>Faisabilité Garantie</h3>
+                    <p>Nous ne promettons que ce que nous pouvons réaliser. Notre engagement : une évaluation honnête de la faisabilité de votre projet avec des solutions réalistes et durables.</p>
+                    <ul class="service-list">
+                        <li>• Diagnostic technique approfondi</li>
+                        <li>• Conseils en toute transparence</li>
+                        <li>• Alternatives si nécessaire</li>
+                        <li>• Engagement sur les résultats</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon purple">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+                        </svg>
+                    </div>
+                    <h3>Accompagnement Complet</h3>
+                    <p>De l'analyse initiale à la mise en œuvre, nous vous accompagnons à chaque étape. Notre objectif : vous proposer la meilleure solution possible selon vos contraintes.</p>
+                    <ul class="service-list">
+                        <li>• Consultation initiale gratuite</li>
+                        <li>• Suivi personnalisé du projet</li>
+                        <li>• Formation et support inclus</li>
+                        <li>• Maintenance préventive</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Contactez-nous</h3>
+                <button onclick="closeContactModal()" class="close-btn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="successMessage" class="success-message">
+                <p>✅ Votre message a été envoyé avec succès ! Nous vous recontacterons dans les plus brefs délais.</p>
+            </div>
+            
+            <form id="contactForm" action="https://formspree.io/f/xqadvbyn" method="POST" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label class="form-label">Nom complet *</label>
+                    <input type="text" name="name" required class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" name="email" required class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Type de besoin *</label>
+                    <select name="service" required class="form-input">
+                        <option value="">Sélectionnez le type de demande</option>
+                        <option value="website">Création de site web sur mesure</option>
+                        <option value="consultation">Consultation et analyse de besoins</option>
+                        <option value="feasibility">Étude de faisabilité</option>
+                        <option value="maintenance">Maintenance informatique</option>
+                        <option value="support">Support technique</option>
+                        <option value="project">Projet informatique spécifique</option>
+                        <option value="other">Autre demande</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea name="message" rows="4" class="form-input form-textarea" placeholder="Décrivez votre problème ou vos besoins..."></textarea>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" name="consent" required>
+                    <span class="checkbox-label">J'accepte que mes données soient utilisées pour me recontacter concernant ma demande (RGPD) *</span>
+                </div>
+                
+                <button type="submit" class="btn-primary" style="width: 100%;">
+                    Envoyer ma demande
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-border"></div>
+        
+        <div class="container">
+            <!-- Contact Section Header -->
+            <div class="contact-header">
+                <h2>Contact</h2>
+                <p>Prêt à démarrer votre projet ? Contactez-nous pour une consultation personnalisée.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="footer-section" style="text-align: center;">
+                    <h4>NextGen Tech</h4>
+                    
+                    <!-- Animated Screen with Slogan -->
+                    <div style="
+                        background: linear-gradient(145deg, #1f2937, #374151);
+                        border-radius: 12px;
+                        padding: 1rem;
+                        border: 1px solid rgba(75, 85, 99, 0.3);
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                        position: relative;
+                        overflow: hidden;
+                        margin: 0 auto 1rem auto;
+                        max-width: 280px;
+                    ">
+                        <!-- Screen Header -->
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <div style="width: 8px; height: 8px; background: #ff5f57; border-radius: 50%;"></div>
+                            <div style="width: 8px; height: 8px; background: #ffbd2e; border-radius: 50%;"></div>
+                            <div style="width: 8px; height: 8px; background: #28ca42; border-radius: 50%;"></div>
+                        </div>
+                        
+                        <!-- Animated Content -->
+                        <div id="footerSloganContent" style="text-align: center; min-height: 60px; display: flex; flex-direction: column; justify-content: center;">
+                            <div class="footer-slogan-frame" style="opacity: 1;">
+                                <div style="font-size: 0.9rem; font-weight: 600; color: #60a5fa; margin-bottom: 0.25rem;">💡 Innovation</div>
+                                <div style="font-size: 0.75rem; color: #9ca3af;">Votre vision, notre expertise</div>
+                            </div>
+                            
+                            <div class="footer-slogan-frame" style="opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;">
+                                <div style="font-size: 0.9rem; font-weight: 600; color: #34d399; margin-bottom: 0.25rem;">🚀 Performance</div>
+                                <div style="font-size: 0.75rem; color: #9ca3af;">Solutions qui font la différence</div>
+                            </div>
+                            
+                            <div class="footer-slogan-frame" style="opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;">
+                                <div style="font-size: 0.9rem; font-weight: 600; color: #fbbf24; margin-bottom: 0.25rem;">⭐ Excellence</div>
+                                <div style="font-size: 0.75rem; color: #9ca3af;">Qualité garantie, résultats assurés</div>
+                            </div>
+                            
+                            <div class="footer-slogan-frame" style="opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;">
+                                <div style="font-size: 0.9rem; font-weight: 600; color: #a78bfa; margin-bottom: 0.25rem;">🎯 Sur-mesure</div>
+                                <div style="font-size: 0.75rem; color: #9ca3af;">Chaque projet est unique</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Progress Dots -->
+                        <div style="display: flex; justify-content: center; gap: 0.25rem; margin-top: 0.5rem;">
+                            <div class="footer-progress-dot" style="width: 4px; height: 4px; background: #60a5fa; border-radius: 50%; opacity: 1;"></div>
+                            <div class="footer-progress-dot" style="width: 4px; height: 4px; background: #4b5563; border-radius: 50%; opacity: 0.5;"></div>
+                            <div class="footer-progress-dot" style="width: 4px; height: 4px; background: #4b5563; border-radius: 50%; opacity: 0.5;"></div>
+                            <div class="footer-progress-dot" style="width: 4px; height: 4px; background: #4b5563; border-radius: 50%; opacity: 0.5;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section" style="padding-left: 3rem;">
+                    <h4>Notre Approche</h4>
+                    <ul>
+                        <li>Analyse personnalisée</li>
+                        <li>Étude de faisabilité</li>
+                        <li>Solutions sur mesure</li>
+                        <li>Accompagnement complet</li>
+                    </ul>
+
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div class="contact-item">
+                            <span>📧</span>
+                            <span>nextgen.tech.cannes@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📞</span>
+                            <span>06 62 18 84 67</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📍</span>
+                            <span>628 allée de la marine royale, 06210 Mandelieu-La-Napoule</span>
+                        </div>
+                    </div>
+
+                </div>
+                
+
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 NextGen Tech. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('show');
+        }
+
+        // Contact modal functions
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+            // Reset form and hide success message
+            document.getElementById('contactForm').reset();
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        // Form submission with Formspree
+        async function submitForm(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            try {
+                // Submit to Formspree
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('contactForm').style.display = 'none';
+                    
+                    // Reset after 4 seconds
+                    setTimeout(() => {
+                        closeContactModal();
+                        document.getElementById('contactForm').style.display = 'block';
+                        form.reset();
+                    }, 4000);
+                } else {
+                    throw new Error('Erreur lors de l\'envoi');
+                }
+            } catch (error) {
+                alert('Erreur lors de l\'envoi du message. Veuillez réessayer ou nous contacter directement à nextgen.tech.cannes@gmail.com');
+                console.error('Error:', error);
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.remove('show');
+                }
+            });
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactModal();
+            }
+        });
+
+        // Story Animation
+        let currentFrame = 0;
+        const frames = document.querySelectorAll('.story-frame');
+        const progressBar = document.getElementById('progressBar');
+        const totalFrames = frames.length;
+        const frameDuration = 3000; // 3 seconds per frame
+
+        function showNextFrame() {
+            // Hide current frame
+            frames[currentFrame].style.opacity = '0';
+            
+            // Move to next frame
+            currentFrame = (currentFrame + 1) % totalFrames;
+            
+            // Show next frame
+            frames[currentFrame].style.opacity = '1';
+            
+            // Update progress bar
+            const progressWidth = ((currentFrame + 1) / totalFrames) * 30;
+            progressBar.style.width = progressWidth + 'px';
+            
+            // Reset progress bar when cycle completes
+            if (currentFrame === 0) {
+                setTimeout(() => {
+                    progressBar.style.width = '0px';
+                    setTimeout(() => {
+                        progressBar.style.width = (30 / totalFrames) + 'px';
+                    }, 100);
+                }, 200);
+            }
+        }
+
+        // Start the story animation
+        function startStoryAnimation() {
+            // Initial progress bar
+            progressBar.style.width = (30 / totalFrames) + 'px';
+            
+            // Start cycling through frames
+            setInterval(showNextFrame, frameDuration);
+        }
+
+        // Start animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(startStoryAnimation, 1000); // Start after 1 second
+        });
+
+        // Footer Slogan Animation
+        let currentSloganFrame = 0;
+        const sloganFrames = document.querySelectorAll('.footer-slogan-frame');
+        const progressDots = document.querySelectorAll('.footer-progress-dot');
+        const totalSloganFrames = sloganFrames.length;
+        const sloganFrameDuration = 2500; // 2.5 seconds per frame
+
+        function showNextSloganFrame() {
+            // Hide current frame
+            sloganFrames[currentSloganFrame].style.opacity = '0';
+            progressDots[currentSloganFrame].style.opacity = '0.5';
+            progressDots[currentSloganFrame].style.background = '#4b5563';
+            
+            // Move to next frame
+            currentSloganFrame = (currentSloganFrame + 1) % totalSloganFrames;
+            
+            // Show next frame
+            sloganFrames[currentSloganFrame].style.opacity = '1';
+            progressDots[currentSloganFrame].style.opacity = '1';
+            
+            // Update progress dot color based on current frame
+            const colors = ['#60a5fa', '#34d399', '#fbbf24', '#a78bfa'];
+            progressDots[currentSloganFrame].style.background = colors[currentSloganFrame];
+        }
+
+        // Start the footer slogan animation
+        function startFooterSloganAnimation() {
+            setInterval(showNextSloganFrame, sloganFrameDuration);
+        }
+
+        // Start footer animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(startStoryAnimation, 1000); // Start hero animation after 1 second
+            setTimeout(startFooterSloganAnimation, 1500); // Start footer animation after 1.5 seconds
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98058cc1e622041a',t:'MTc1ODA4MDA4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
