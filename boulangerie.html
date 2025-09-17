@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boulangerie Artisanale - Pain & Pâtisseries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #f7f3e9 0%, #e8dcc0 100%);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(139, 69, 19, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #A0522D 0%, #CD853F 100%);
+            transform: translateY(-2px);
+        }
+        
+        .cart-badge {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .modal {
+            backdrop-filter: blur(10px);
+        }
+        
+        .payment-option {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .payment-option:hover {
+            border-color: #8B4513;
+            background-color: #f7f3e9;
+        }
+        
+        .payment-option.selected {
+            border-color: #8B4513;
+            background-color: #f7f3e9;
+        }
+    </style>
+</head>
+<body class="font-inter bg-amber-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="font-playfair text-2xl font-bold text-amber-900">🥖 Boulangerie Artisanale</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#accueil" class="text-amber-900 hover:text-amber-700 font-medium">Accueil</a>
+                    <a href="#produits" class="text-amber-900 hover:text-amber-700 font-medium">Produits</a>
+                    <a href="#contact" class="text-amber-900 hover:text-amber-700 font-medium">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleCart()" class="relative p-2 text-amber-900 hover:text-amber-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9"></path>
+                        </svg>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-gradient py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center fade-in-up">
+                <h2 class="font-playfair text-5xl md:text-6xl font-bold text-amber-900 mb-6">
+                    L'Art du Pain Artisanal
+                </h2>
+                <p class="text-xl text-amber-800 mb-8 max-w-2xl mx-auto">
+                    Découvrez nos créations artisanales, pétries avec passion depuis 1952. 
+                    Du pain traditionnel aux pâtisseries raffinées, chaque produit raconte une histoire.
+                </p>
+                <button onclick="scrollToProducts()" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg">
+                    Découvrir nos produits
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtres -->
+    <section class="bg-white py-8 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="filterProducts('tous')" class="filter-btn bg-amber-900 text-white px-6 py-2 rounded-full font-medium">
+                    Tous les produits
+                </button>
+                <button onclick="filterProducts('pain')" class="filter-btn bg-amber-100 text-amber-900 px-6 py-2 rounded-full font-medium hover:bg-amber-200">
+                    Pains
+                </button>
+                <button onclick="filterProducts('viennoiserie')" class="filter-btn bg-amber-100 text-amber-900 px-6 py-2 rounded-full font-medium hover:bg-amber-200">
+                    Viennoiseries
+                </button>
+                <button onclick="filterProducts('patisserie')" class="filter-btn bg-amber-100 text-amber-900 px-6 py-2 rounded-full font-medium hover:bg-amber-200">
+                    Pâtisseries
+                </button>
+                <button onclick="filterProducts('specialite')" class="filter-btn bg-amber-100 text-amber-900 px-6 py-2 rounded-full font-medium hover:bg-amber-200">
+                    Spécialités
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produits -->
+    <section id="produits" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="font-playfair text-4xl font-bold text-amber-900 mb-4">Nos Créations</h3>
+                <p class="text-amber-700 text-lg">Chaque produit est façonné avec amour et savoir-faire</p>
+            </div>
+            
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Les produits seront générés par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-amber-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="font-playfair text-3xl font-bold mb-6">Nous Contacter</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>123 Rue de la Boulangerie, 75001 Paris</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                            </svg>
+                            <span>01 42 36 78 90</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                            <span>contact@boulangerie-artisanale.fr</span>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-semibold text-lg mb-4">Horaires d'ouverture</h4>
+                        <div class="space-y-2 text-amber-100">
+                            <p>Lundi - Vendredi: 6h30 - 19h30</p>
+                            <p>Samedi: 6h30 - 20h00</p>
+                            <p>Dimanche: 7h00 - 13h00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-amber-800 p-6 rounded-lg">
+                    <h4 class="font-playfair text-2xl font-bold mb-4">Nous Écrire</h4>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Votre nom" class="w-full p-3 rounded-lg text-amber-900">
+                        <input type="email" placeholder="Votre email" class="w-full p-3 rounded-lg text-amber-900">
+                        <textarea placeholder="Votre message" rows="4" class="w-full p-3 rounded-lg text-amber-900"></textarea>
+                        <button type="submit" class="w-full bg-white text-amber-900 py-3 rounded-lg font-semibold hover:bg-amber-50 transition-colors">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Panier Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6 border-b">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-playfair text-2xl font-bold text-amber-900">Votre Panier</h3>
+                        <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="cart-items" class="p-6">
+                    <!-- Les articles du panier seront affichés ici -->
+                </div>
+                <div class="p-6 border-t bg-gray-50">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="font-semibold text-lg">Total:</span>
+                        <span id="cart-total" class="font-bold text-xl text-amber-900">0,00 €</span>
+                    </div>
+                    <button onclick="proceedToCheckout()" class="w-full btn-primary text-white py-3 rounded-lg font-semibold">
+                        Procéder au paiement
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6 border-b">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-playfair text-2xl font-bold text-amber-900">Finaliser la commande</h3>
+                        <button onclick="closeCheckout()" class="text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Informations client -->
+                        <div>
+                            <h4 class="font-semibold text-lg mb-4 text-amber-900">Informations de contact</h4>
+                            <form id="checkout-form" class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <input type="text" id="firstName" placeholder="Prénom" required class="p-3 border rounded-lg">
+                                    <input type="text" id="lastName" placeholder="Nom" required class="p-3 border rounded-lg">
+                                </div>
+                                <input type="email" id="email" placeholder="Email" required class="w-full p-3 border rounded-lg">
+                                <input type="tel" id="phone" placeholder="Téléphone" required class="w-full p-3 border rounded-lg">
+                                <textarea id="message" placeholder="Message optionnel pour la boulangerie" rows="3" class="w-full p-3 border rounded-lg"></textarea>
+                                
+                                <h4 class="font-semibold text-lg mt-6 mb-4 text-amber-900">Mode de paiement</h4>
+                                <div class="space-y-3">
+                                    <div class="payment-option p-4 rounded-lg cursor-pointer" onclick="selectPayment('card')">
+                                        <div class="flex items-center">
+                                            <input type="radio" name="payment" value="card" class="mr-3">
+                                            <span class="font-medium">💳 Carte bancaire</span>
+                                        </div>
+                                    </div>
+                                    <div class="payment-option p-4 rounded-lg cursor-pointer" onclick="selectPayment('paypal')">
+                                        <div class="flex items-center">
+                                            <input type="radio" name="payment" value="paypal" class="mr-3">
+                                            <span class="font-medium">🅿️ PayPal</span>
+                                        </div>
+                                    </div>
+                                    <div class="payment-option p-4 rounded-lg cursor-pointer" onclick="selectPayment('apple')">
+                                        <div class="flex items-center">
+                                            <input type="radio" name="payment" value="apple" class="mr-3">
+                                            <span class="font-medium">🍎 Apple Pay</span>
+                                        </div>
+                                    </div>
+                                    <div class="payment-option p-4 rounded-lg cursor-pointer" onclick="selectPayment('stripe')">
+                                        <div class="flex items-center">
+                                            <input type="radio" name="payment" value="stripe" class="mr-3">
+                                            <span class="font-medium">💎 Stripe</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Récapitulatif commande -->
+                        <div>
+                            <h4 class="font-semibold text-lg mb-4 text-amber-900">Récapitulatif de la commande</h4>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <div id="checkout-items" class="space-y-3 mb-4">
+                                    <!-- Articles seront affichés ici -->
+                                </div>
+                                <div class="border-t pt-4">
+                                    <div class="flex justify-between items-center text-lg font-bold text-amber-900">
+                                        <span>Total:</span>
+                                        <span id="checkout-total">0,00 €</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                                <h5 class="font-semibold text-blue-900 mb-2">ℹ️ Information importante</h5>
+                                <p class="text-sm text-blue-800">
+                                    Ceci est une démonstration. Dans un vrai site, le paiement serait sécurisé et un email serait automatiquement envoyé à la boulangerie avec les détails de votre commande.
+                                </p>
+                            </div>
+                            
+                            <button onclick="processOrder()" class="w-full btn-primary text-white py-4 rounded-lg font-semibold mt-6">
+                                Confirmer la commande
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-md w-full p-8 text-center">
+                <div class="text-6xl mb-4">✅</div>
+                <h3 class="font-playfair text-2xl font-bold text-amber-900 mb-4">Commande confirmée !</h3>
+                <p class="text-gray-600 mb-6">
+                    Merci pour votre commande ! Un email de confirmation a été envoyé à la boulangerie avec tous les détails.
+                </p>
+                <button onclick="closeConfirmation()" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                    Continuer mes achats
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Données des produits
+        const products = [
+            {
+                id: 1,
+                name: "Baguette Tradition",
+                category: "pain",
+                price: 1.20,
+                image: "https://www.thedailymeal.com/1122489/the-cultural-milestone-that-the-classic-french-baguette-just-achieved/",
+                description: "Notre baguette traditionnelle, croustillante à l'extérieur, moelleuse à l'intérieur",
+                featured: true
+            },
+            {
+                id: 2,
+                name: "Pain de Campagne",
+                category: "pain",
+                price: 2.80,
+                image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Pain rustique au levain, parfait pour accompagner vos repas",
+                featured: false
+            },
+            {
+                id: 3,
+                name: "Croissant au Beurre",
+                category: "viennoiserie",
+                price: 1.50,
+                image: "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Croissant feuilleté au beurre AOP, doré à point",
+                featured: true
+            },
+            {
+                id: 4,
+                name: "Pain au Chocolat",
+                category: "viennoiserie",
+                price: 1.60,
+                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Pâte feuilletée garnie de chocolat noir de qualité",
+                featured: true
+            },
+            {
+                id: 5,
+                name: "Éclair au Café",
+                category: "patisserie",
+                price: 3.20,
+                image: "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Pâte à choux garnie de crème pâtissière au café",
+                featured: false
+            },
+            {
+                id: 6,
+                name: "Tarte aux Fruits",
+                category: "patisserie",
+                price: 4.50,
+                image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Tarte sablée garnie de fruits de saison et crème pâtissière",
+                featured: true
+            },
+            {
+                id: 7,
+                name: "Brioche Tressée",
+                category: "specialite",
+                price: 5.20,
+                image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Brioche artisanale tressée, moelleuse et parfumée",
+                featured: false
+            },
+            {
+                id: 8,
+                name: "Fougasse aux Olives",
+                category: "specialite",
+                price: 3.80,
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Pain provençal aux olives noires et herbes de Provence",
+                featured: true
+            },
+            {
+                id: 9,
+                name: "Mille-feuille",
+                category: "patisserie",
+                price: 4.20,
+                image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Feuilletage croustillant et crème pâtissière vanille",
+                featured: false
+            },
+            {
+                id: 10,
+                name: "Chausson aux Pommes",
+                category: "viennoiserie",
+                price: 2.10,
+                image: "https://images.unsplash.com/photo-1549985908-597a09ef0a7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Pâte feuilletée garnie de compotée de pommes maison",
+                featured: false
+            },
+            {
+                id: 11,
+                name: "Pain aux Noix",
+                category: "pain",
+                price: 3.50,
+                image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Pain complet aux cerneaux de noix, riche en saveurs",
+                featured: false
+            },
+            {
+                id: 12,
+                name: "Religieuse Chocolat",
+                category: "patisserie",
+                price: 3.80,
+                image: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Choux garnis de crème pâtissière chocolat et glaçage",
+                featured: true
+            }
+        ];
+
+        let cart = [];
+        let currentFilter = 'tous';
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            displayProducts();
+            updateCartDisplay();
+        });
+
+        // Affichage des produits
+        function displayProducts() {
+            const grid = document.getElementById('products-grid');
+            const filteredProducts = currentFilter === 'tous' 
+                ? products 
+                : products.filter(product => product.category === currentFilter);
+
+            grid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card bg-white rounded-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover" onerror="this.src=''; this.alt='Image non disponible'; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-48 bg-amber-100 items-center justify-center text-6xl">🥖</div>
+                        ${product.featured ? '<div class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">Nouveauté</div>' : ''}
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-playfair text-xl font-semibold text-amber-900 mb-2">${product.name}</h4>
+                        <p class="text-gray-600 text-sm mb-4">${product.description}</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-amber-900">${product.price.toFixed(2)} €</span>
+                        </div>
+                        <button onclick="addToCart(${product.id})" class="w-full btn-primary text-white py-3 rounded-lg font-semibold">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filtrage des produits
+        function filterProducts(category) {
+            currentFilter = category;
+            displayProducts();
+            
+            // Mise à jour des boutons de filtre
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-900', 'text-white');
+                btn.classList.add('bg-amber-100', 'text-amber-900');
+            });
+            
+            event.target.classList.remove('bg-amber-100', 'text-amber-900');
+            event.target.classList.add('bg-amber-900', 'text-white');
+        }
+
+        // Ajout au panier
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+            
+            updateCartDisplay();
+            
+            // Animation du badge panier
+            const badge = document.getElementById('cart-count');
+            badge.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                badge.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // Mise à jour de l'affichage du panier
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            updateCartModal();
+        }
+
+        // Mise à jour du modal panier
+        function updateCartModal() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-center text-gray-500 py-8">Votre panier est vide</p>';
+                cartTotal.textContent = '0,00 €';
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="flex items-center justify-between py-4 border-b">
+                    <div class="flex items-center">
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded mr-4" onerror="this.src=''; this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        <span class="text-2xl mr-4 hidden">🥖</span>
+                        <div>
+                            <h5 class="font-semibold">${item.name}</h5>
+                            <p class="text-sm text-gray-600">${item.price.toFixed(2)} € × ${item.quantity}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="updateQuantity(${item.id}, -1)" class="bg-gray-200 text-gray-700 w-8 h-8 rounded-full">-</button>
+                        <span class="w-8 text-center">${item.quantity}</span>
+                        <button onclick="updateQuantity(${item.id}, 1)" class="bg-amber-900 text-white w-8 h-8 rounded-full">+</button>
+                        <button onclick="removeFromCart(${item.id})" class="text-red-500 ml-4">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            cartTotal.textContent = total.toFixed(2) + ' €';
+        }
+
+        // Mise à jour de la quantité
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        // Suppression du panier
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+        }
+
+        // Toggle panier
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Procéder au checkout
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert('Votre panier est vide !');
+                return;
+            }
+            
+            document.getElementById('cart-modal').classList.add('hidden');
+            document.getElementById('checkout-modal').classList.remove('hidden');
+            updateCheckoutDisplay();
+        }
+
+        // Mise à jour de l'affichage checkout
+        function updateCheckoutDisplay() {
+            const checkoutItems = document.getElementById('checkout-items');
+            const checkoutTotal = document.getElementById('checkout-total');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            checkoutItems.innerHTML = cart.map(item => `
+                <div class="flex justify-between items-center">
+                    <span>${item.name} × ${item.quantity}</span>
+                    <span class="font-semibold">${(item.price * item.quantity).toFixed(2)} €</span>
+                </div>
+            `).join('');
+            
+            checkoutTotal.textContent = total.toFixed(2) + ' €';
+        }
+
+        // Sélection du mode de paiement
+        function selectPayment(method) {
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            event.currentTarget.classList.add('selected');
+            document.querySelector(`input[value="${method}"]`).checked = true;
+        }
+
+        // Traitement de la commande
+        function processOrder() {
+            const form = document.getElementById('checkout-form');
+            const formData = new FormData(form);
+            
+            // Validation simple
+            if (!formData.get('firstName') || !formData.get('lastName') || !formData.get('email') || !formData.get('phone')) {
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+            
+            if (!document.querySelector('input[name="payment"]:checked')) {
+                alert('Veuillez sélectionner un mode de paiement.');
+                return;
+            }
+            
+            // Simulation de l'envoi d'email à la boulangerie
+            const orderData = {
+                customer: {
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    message: formData.get('message')
+                },
+                items: cart,
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                paymentMethod: document.querySelector('input[name="payment"]:checked').value,
+                orderDate: new Date().toLocaleString('fr-FR')
+            };
+            
+            console.log('Email envoyé à la boulangerie:', orderData);
+            
+            // Réinitialisation du panier
+            cart = [];
+            updateCartDisplay();
+            
+            // Affichage de la confirmation
+            document.getElementById('checkout-modal').classList.add('hidden');
+            document.getElementById('confirmation-modal').classList.remove('hidden');
+        }
+
+        // Fermeture du checkout
+        function closeCheckout() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        // Fermeture de la confirmation
+        function closeConfirmation() {
+            document.getElementById('confirmation-modal').classList.add('hidden');
+        }
+
+        // Scroll vers les produits
+        function scrollToProducts() {
+            document.getElementById('produits').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Gestion du formulaire de contact
+        document.querySelector('#contact form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message envoyé ! Nous vous répondrons dans les plus brefs délais.');
+            this.reset();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9805cd3060de2068',t:'MTc1ODA4MjcyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
